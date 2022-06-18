@@ -31,10 +31,16 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_For_Administrator));
             this.button_for_inserting_Client = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button_for_inserting_CTO = new System.Windows.Forms.Button();
+            this.button_for_updating_Client = new System.Windows.Forms.Button();
             this.button_for_Exit_from_admin_form = new System.Windows.Forms.Button();
+            this.button_for_deleting_Client = new System.Windows.Forms.Button();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.button_for_sql_reader = new System.Windows.Forms.Button();
+            this.button_for_max_price = new System.Windows.Forms.Button();
+            this.button_for_get_count = new System.Windows.Forms.Button();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // button_for_inserting_Client
@@ -53,36 +59,26 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(590, 1);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(653, 237);
+            this.dataGridView1.Size = new System.Drawing.Size(711, 287);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // button1
+            // button_for_updating_Client
             // 
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(184, 55);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(137, 41);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Update into Client";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button_for_inserting_CTO
-            // 
-            this.button_for_inserting_CTO.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_for_inserting_CTO.Location = new System.Drawing.Point(12, 260);
-            this.button_for_inserting_CTO.Name = "button_for_inserting_CTO";
-            this.button_for_inserting_CTO.Size = new System.Drawing.Size(137, 41);
-            this.button_for_inserting_CTO.TabIndex = 3;
-            this.button_for_inserting_CTO.Text = "Insert into CTO";
-            this.button_for_inserting_CTO.UseVisualStyleBackColor = true;
-            this.button_for_inserting_CTO.Click += new System.EventHandler(this.button_for_inserting_for_CTO_Click);
+            this.button_for_updating_Client.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.button_for_updating_Client.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_for_updating_Client.Location = new System.Drawing.Point(179, 55);
+            this.button_for_updating_Client.Name = "button_for_updating_Client";
+            this.button_for_updating_Client.Size = new System.Drawing.Size(137, 41);
+            this.button_for_updating_Client.TabIndex = 2;
+            this.button_for_updating_Client.Text = "Update in Client";
+            this.button_for_updating_Client.UseVisualStyleBackColor = true;
+            this.button_for_updating_Client.Click += new System.EventHandler(this.button_for_updating_for_Client_Click);
             // 
             // button_for_Exit_from_admin_form
             // 
             this.button_for_Exit_from_admin_form.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_for_Exit_from_admin_form.Location = new System.Drawing.Point(527, 635);
+            this.button_for_Exit_from_admin_form.Location = new System.Drawing.Point(179, 674);
             this.button_for_Exit_from_admin_form.Name = "button_for_Exit_from_admin_form";
             this.button_for_Exit_from_admin_form.Size = new System.Drawing.Size(153, 33);
             this.button_for_Exit_from_admin_form.TabIndex = 4;
@@ -90,16 +86,85 @@
             this.button_for_Exit_from_admin_form.UseVisualStyleBackColor = true;
             this.button_for_Exit_from_admin_form.Click += new System.EventHandler(this.button_for_Exit_from_admin_form_Click);
             // 
+            // button_for_deleting_Client
+            // 
+            this.button_for_deleting_Client.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_for_deleting_Client.Location = new System.Drawing.Point(348, 55);
+            this.button_for_deleting_Client.Name = "button_for_deleting_Client";
+            this.button_for_deleting_Client.Size = new System.Drawing.Size(137, 41);
+            this.button_for_deleting_Client.TabIndex = 5;
+            this.button_for_deleting_Client.Text = "Delete in Client";
+            this.button_for_deleting_Client.UseVisualStyleBackColor = true;
+            this.button_for_deleting_Client.Click += new System.EventHandler(this.button_for_deleting_Client_Click);
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Items.AddRange(new object[] {
+            "SqlReader"});
+            this.listBox1.Location = new System.Drawing.Point(12, 436);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(473, 160);
+            this.listBox1.TabIndex = 6;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            // 
+            // button_for_sql_reader
+            // 
+            this.button_for_sql_reader.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_for_sql_reader.Location = new System.Drawing.Point(179, 171);
+            this.button_for_sql_reader.Name = "button_for_sql_reader";
+            this.button_for_sql_reader.Size = new System.Drawing.Size(137, 41);
+            this.button_for_sql_reader.TabIndex = 8;
+            this.button_for_sql_reader.Text = "SQL_Reader";
+            this.button_for_sql_reader.UseVisualStyleBackColor = true;
+            this.button_for_sql_reader.Click += new System.EventHandler(this.button_for_sql_reader_Click);
+            // 
+            // button_for_max_price
+            // 
+            this.button_for_max_price.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_for_max_price.Location = new System.Drawing.Point(348, 156);
+            this.button_for_max_price.Name = "button_for_max_price";
+            this.button_for_max_price.Size = new System.Drawing.Size(137, 71);
+            this.button_for_max_price.TabIndex = 9;
+            this.button_for_max_price.Text = "The max price among all List_of_works";
+            this.button_for_max_price.UseVisualStyleBackColor = true;
+            this.button_for_max_price.Click += new System.EventHandler(this.button_for_max_price_Click);
+            // 
+            // button_for_get_count
+            // 
+            this.button_for_get_count.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_for_get_count.Location = new System.Drawing.Point(12, 171);
+            this.button_for_get_count.Name = "button_for_get_count";
+            this.button_for_get_count.Size = new System.Drawing.Size(137, 41);
+            this.button_for_get_count.TabIndex = 10;
+            this.button_for_get_count.Text = "Get_count";
+            this.button_for_get_count.UseVisualStyleBackColor = true;
+            this.button_for_get_count.Click += new System.EventHandler(this.button_for_get_count_Click);
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(590, 467);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(711, 287);
+            this.dataGridView2.TabIndex = 11;
+            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
+            // 
             // Form_For_Administrator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(1242, 701);
+            this.ClientSize = new System.Drawing.Size(1306, 806);
+            this.Controls.Add(this.dataGridView2);
+            this.Controls.Add(this.button_for_get_count);
+            this.Controls.Add(this.button_for_max_price);
+            this.Controls.Add(this.button_for_sql_reader);
+            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.button_for_deleting_Client);
             this.Controls.Add(this.button_for_Exit_from_admin_form);
-            this.Controls.Add(this.button_for_inserting_CTO);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.button_for_updating_Client);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button_for_inserting_Client);
             this.DoubleBuffered = true;
@@ -108,6 +173,7 @@
             this.Text = "Form_For_Administrator";
             this.Load += new System.EventHandler(this.Form_For_Administrator_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -116,8 +182,13 @@
 
         private System.Windows.Forms.Button button_for_inserting_Client;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button_for_inserting_CTO;
+        private System.Windows.Forms.Button button_for_updating_Client;
         private System.Windows.Forms.Button button_for_Exit_from_admin_form;
+        private System.Windows.Forms.Button button_for_deleting_Client;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Button button_for_sql_reader;
+        private System.Windows.Forms.Button button_for_max_price;
+        private System.Windows.Forms.Button button_for_get_count;
+        private System.Windows.Forms.DataGridView dataGridView2;
     }
 }
