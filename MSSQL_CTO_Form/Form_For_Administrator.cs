@@ -8,32 +8,69 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
-using System;
-using System.Threading.Tasks;
-
+//using System.Data.SqlClient;
 namespace MSSQL_CTO_Form
 {
     public partial class Form_For_Administrator : Form
     {
         static string connectionString = "Data Source=ANTON-DESKTOP\\CTO_SERVER;Database=CTO;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;";
         SqlConnection connection = new SqlConnection(connectionString);
-        DataTable table = new DataTable();
-        DataTable column_of_Ordering = new DataTable();
+        //DataTable table = new DataTable();
+        //DataTable column_of_Ordering = new DataTable();
+        DataRelation rd1;
+        DataSet ds = new DataSet();
+
+        DataRelation rd2;
+        DataSet ds1 = new DataSet();
+        DataSet ds2 = new DataSet();
+        SqlDataAdapter adapter1;
+        SqlDataAdapter adapter2;
+        //SqlCommandBuilder commandBuilder1;
 
         public Form_For_Administrator()
         {
             InitializeComponent();
 
-            try
+            //dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            //dataGridView3.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            connection.Open();
+            SqlDataAdapter adapter = new SqlDataAdapter("Select *From Client", connection);
+            adapter.Fill(ds, "Client");
+            dataGridView1.DataSource = ds.Tables["Client"];
+            adapter.Dispose();
+            adapter = new SqlDataAdapter("Select *From Ordering", connection);
+            adapter.Fill(ds, "Ordering");
+            ds.Tables["Client"].Constraints.Add("Client_Code", ds.Tables["Client"].Columns[6], true);
+            DataColumn parent = ds.Tables["Client"].Columns["Client_Code"];
+            DataColumn child = ds.Tables["Ordering"].Columns["Client_Code"];
+            rd1 = new DataRelation("By_Client_Code", parent, child);
+            ds.Relations.Add(rd1);
+            //////////////////////////////////////////////////////////////////
+            SqlDataAdapter adapter2 = new SqlDataAdapter("Select *From Ordering", connection);
+            adapter2.Fill(ds1, "Ordering");
+            dataGridView2.DataSource = ds1.Tables["Ordering"];
+            adapter2.Dispose();
+            adapter2 = new SqlDataAdapter("Select *From List_of_works", connection);
+            adapter2.Fill(ds1, "List_of_works");
+            ds1.Tables["Ordering"].Constraints.Add("Code_Of_Ordering", ds1.Tables["Ordering"].Columns[2], true);
+            DataColumn parent1 = ds1.Tables["Ordering"].Columns["Code_Of_Ordering"];
+            DataColumn child1 = ds1.Tables["List_of_works"].Columns["Code_of_orderings"];
+            rd2 = new DataRelation("By_Code_of_ordering", parent1, child1);
+            ds1.Relations.Add(rd2);
+
+            //update_datagrid();
+            MessageBox.Show("З'єднання відкрите");
+
+           
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                connection.Open();
-                update_datagrid();
-                MessageBox.Show("З'єднання відкрите");
+                adapter2 = new SqlDataAdapter("select * from List_of_works", connection);
+                ds2 = new DataSet();
+                adapter2.Fill(ds2);
+                //dataGridView3.DataSource = ds2.Tables[0];
             }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+
         }
         private void button_for_inserting_for_Client_Click(object sender, EventArgs e)
         {
@@ -62,12 +99,12 @@ namespace MSSQL_CTO_Form
             try
             {
                 SqlDataAdapter adapter = new SqlDataAdapter("Select *From Client", connection);
-                adapter.Fill(table);
-                dataGridView1.DataSource = table;
-                SqlDataAdapter adapter1 = new SqlDataAdapter
-                    ("Select Ordering.Code_Of_Ordering, List_of_works.work From List_of_works Join Ordering on Ordering.Code_Of_Ordering = List_of_works.Code_of_orderings", connection);
-                adapter1.Fill(column_of_Ordering);
-                dataGridView2.DataSource = column_of_Ordering;
+                adapter.Fill(ds, "Client");
+                dataGridView1.DataSource = ds.Tables["Client"];
+                adapter.Dispose();
+                adapter = new SqlDataAdapter("Select *From Ordering", connection);
+                adapter.Fill(ds, "Ordering");
+               // dataGridView2.DataSource = column_of_Ordering;
             }
             catch (Exception ex)
             {
@@ -82,7 +119,9 @@ namespace MSSQL_CTO_Form
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            //DataView dv = new DataView(ds.Tables["Client"]);
+            //DataRowView line = dv[dataGridView1.CurrentRow.Index];
+            //dataGridView2.DataSource = line.CreateChildView(rd1);
         }
 
         private void button_for_Exit_from_admin_form_Click(object sender, EventArgs e)
@@ -115,7 +154,14 @@ namespace MSSQL_CTO_Form
 
         private void button_for_sql_reader_Click(object sender, EventArgs e)
         {
-            SqlCommand use_select = new SqlCommand("Select *From Car", connection);
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                adapter2 = new SqlDataAdapter("Select *From List_of_works", connection);
+                ds2 = new DataSet();
+                adapter2.Fill(ds2);
+                dataGridView3.DataSource = ds2.Tables[0];
+            }
+            SqlCommand use_select = new SqlCommand("Select *From List_of_works", connection);
             SqlDataReader reader = use_select.ExecuteReader();
             if (reader.HasRows)
             {
@@ -157,6 +203,76 @@ namespace MSSQL_CTO_Form
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //using (SqlConnection connection = new SqlConnection(connectionString))
+            //{
+            //    adapter1 = new SqlDataAdapter("select * from Ordering", connection);
+            //    //ds = new DataSet();
+            //    //adapter1.Fill(ds);
+            //    SqlCommandBuilder commandBuilder = new SqlCommandBuilder(adapter1);
+            //    adapter1.InsertCommand = new SqlCommand("addOrdering", connection);
+            //    adapter1.InsertCommand.CommandType = CommandType.StoredProcedure;
+            //    adapter1.InsertCommand.Parameters.Add(new SqlParameter("@Client_Code", SqlDbType.Int, 0, "Client_Code"));
+            //    adapter1.InsertCommand.Parameters.Add(new SqlParameter("@Manager", SqlDbType.Int, 0, "Manager"));
+            //    adapter1.InsertCommand.Parameters.Add(new SqlParameter("@Code_of_ordering", SqlDbType.Int, 0, "Code_Of_Ordering"));
+            //    adapter1.InsertCommand.Parameters.Add(new SqlParameter("@VIN_number", SqlDbType.Int, 0, "VIN_numbers"));
+
+            //    adapter1.Update(ds1);
+            //}
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataView dv = new DataView(ds.Tables["Client"]);
+            DataRowView line = dv[dataGridView1.CurrentRow.Index];
+            dataGridView2.DataSource = line.CreateChildView(rd1);
+            //dataGridView3.Rows.Clear();
+            //dataGridView2.CurrentRow
+        }
+
+        private void dataGridView3_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+
+        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                DataView dv1 = new DataView(ds1.Tables["Ordering"]);
+                DataRowView line1 = dv1[dataGridView2.CurrentRow.Index];
+                dataGridView3.DataSource = line1.CreateChildView(rd2);
+            }
+            catch
+            {
+                MessageBox.Show($"Виникла помилка");
+                return;
+            }
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                adapter2 = new SqlDataAdapter("select * from List_of_works", connection);
+                //ds = new DataSet();
+                //adapter1.Fill(ds);
+                SqlCommandBuilder commandBuilder = new SqlCommandBuilder(adapter2);
+                adapter2.InsertCommand = new SqlCommand("addList_of_works", connection);
+                adapter2.InsertCommand.CommandType = CommandType.StoredProcedure;
+                adapter2.InsertCommand.Parameters.Add(new SqlParameter("@Code", SqlDbType.Int, 0, "Code"));
+                adapter2.InsertCommand.Parameters.Add(new SqlParameter("@work", SqlDbType.Int, 0, "work"));
+                adapter2.InsertCommand.Parameters.Add(new SqlParameter("@duration_of_work", SqlDbType.Int, 0, "duration_of_work"));
+                adapter2.InsertCommand.Parameters.Add(new SqlParameter("@Code_of_orderings", SqlDbType.Int, 0, "Code_of_orderings"));
+                adapter2.InsertCommand.Parameters.Add(new SqlParameter("@price", SqlDbType.Int, 0, "price"));
+                adapter2.InsertCommand.Parameters.Add(new SqlParameter("@worker_Code", SqlDbType.Int, 0, "worker_Code"));
+
+                adapter2.Update(ds2);
+            }
         }
     }
 }

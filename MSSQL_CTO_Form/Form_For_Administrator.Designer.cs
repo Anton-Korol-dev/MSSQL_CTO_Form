@@ -39,14 +39,18 @@
             this.button_for_max_price = new System.Windows.Forms.Button();
             this.button_for_get_count = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
+            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.button_for_add_List_of_works = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.SuspendLayout();
             // 
             // button_for_inserting_Client
             // 
             this.button_for_inserting_Client.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_for_inserting_Client.Location = new System.Drawing.Point(12, 55);
+            this.button_for_inserting_Client.Location = new System.Drawing.Point(12, 384);
             this.button_for_inserting_Client.Name = "button_for_inserting_Client";
             this.button_for_inserting_Client.Size = new System.Drawing.Size(137, 41);
             this.button_for_inserting_Client.TabIndex = 0;
@@ -57,17 +61,18 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(590, 1);
+            this.dataGridView1.Location = new System.Drawing.Point(491, 12);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(711, 287);
             this.dataGridView1.TabIndex = 1;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // button_for_updating_Client
             // 
             this.button_for_updating_Client.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.button_for_updating_Client.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_for_updating_Client.Location = new System.Drawing.Point(179, 55);
+            this.button_for_updating_Client.Location = new System.Drawing.Point(12, 431);
             this.button_for_updating_Client.Name = "button_for_updating_Client";
             this.button_for_updating_Client.Size = new System.Drawing.Size(137, 41);
             this.button_for_updating_Client.TabIndex = 2;
@@ -78,7 +83,7 @@
             // button_for_Exit_from_admin_form
             // 
             this.button_for_Exit_from_admin_form.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_for_Exit_from_admin_form.Location = new System.Drawing.Point(179, 674);
+            this.button_for_Exit_from_admin_form.Location = new System.Drawing.Point(332, 688);
             this.button_for_Exit_from_admin_form.Name = "button_for_Exit_from_admin_form";
             this.button_for_Exit_from_admin_form.Size = new System.Drawing.Size(153, 33);
             this.button_for_Exit_from_admin_form.TabIndex = 4;
@@ -89,7 +94,7 @@
             // button_for_deleting_Client
             // 
             this.button_for_deleting_Client.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_for_deleting_Client.Location = new System.Drawing.Point(348, 55);
+            this.button_for_deleting_Client.Location = new System.Drawing.Point(12, 478);
             this.button_for_deleting_Client.Name = "button_for_deleting_Client";
             this.button_for_deleting_Client.Size = new System.Drawing.Size(137, 41);
             this.button_for_deleting_Client.TabIndex = 5;
@@ -102,7 +107,7 @@
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Items.AddRange(new object[] {
             "SqlReader"});
-            this.listBox1.Location = new System.Drawing.Point(12, 436);
+            this.listBox1.Location = new System.Drawing.Point(12, 205);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(473, 160);
             this.listBox1.TabIndex = 6;
@@ -111,7 +116,7 @@
             // button_for_sql_reader
             // 
             this.button_for_sql_reader.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_for_sql_reader.Location = new System.Drawing.Point(179, 171);
+            this.button_for_sql_reader.Location = new System.Drawing.Point(12, 525);
             this.button_for_sql_reader.Name = "button_for_sql_reader";
             this.button_for_sql_reader.Size = new System.Drawing.Size(137, 41);
             this.button_for_sql_reader.TabIndex = 8;
@@ -122,7 +127,7 @@
             // button_for_max_price
             // 
             this.button_for_max_price.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_for_max_price.Location = new System.Drawing.Point(348, 156);
+            this.button_for_max_price.Location = new System.Drawing.Point(12, 619);
             this.button_for_max_price.Name = "button_for_max_price";
             this.button_for_max_price.Size = new System.Drawing.Size(137, 71);
             this.button_for_max_price.TabIndex = 9;
@@ -133,7 +138,7 @@
             // button_for_get_count
             // 
             this.button_for_get_count.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_for_get_count.Location = new System.Drawing.Point(12, 171);
+            this.button_for_get_count.Location = new System.Drawing.Point(12, 572);
             this.button_for_get_count.Name = "button_for_get_count";
             this.button_for_get_count.Size = new System.Drawing.Size(137, 41);
             this.button_for_get_count.TabIndex = 10;
@@ -144,19 +149,53 @@
             // dataGridView2
             // 
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(590, 467);
+            this.dataGridView2.Location = new System.Drawing.Point(491, 305);
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(711, 287);
+            this.dataGridView2.Size = new System.Drawing.Size(466, 134);
             this.dataGridView2.TabIndex = 11;
+            this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(266, 384);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 12;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // dataGridView3
+            // 
+            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView3.Location = new System.Drawing.Point(491, 445);
+            this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.Size = new System.Drawing.Size(644, 136);
+            this.dataGridView3.TabIndex = 13;
+            this.dataGridView3.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellClick);
+            // 
+            // button_for_add_List_of_works
+            // 
+            this.button_for_add_List_of_works.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_for_add_List_of_works.Location = new System.Drawing.Point(347, 384);
+            this.button_for_add_List_of_works.Name = "button_for_add_List_of_works";
+            this.button_for_add_List_of_works.Size = new System.Drawing.Size(138, 41);
+            this.button_for_add_List_of_works.TabIndex = 14;
+            this.button_for_add_List_of_works.Text = "For_List_of_works";
+            this.button_for_add_List_of_works.UseVisualStyleBackColor = true;
+            this.button_for_add_List_of_works.Click += new System.EventHandler(this.button2_Click);
             // 
             // Form_For_Administrator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(1306, 806);
+            this.Controls.Add(this.button_for_add_List_of_works);
+            this.Controls.Add(this.dataGridView3);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.button_for_get_count);
             this.Controls.Add(this.button_for_max_price);
@@ -174,6 +213,7 @@
             this.Load += new System.EventHandler(this.Form_For_Administrator_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -190,5 +230,8 @@
         private System.Windows.Forms.Button button_for_max_price;
         private System.Windows.Forms.Button button_for_get_count;
         private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.Button button_for_add_List_of_works;
     }
 }
